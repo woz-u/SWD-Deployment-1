@@ -17,10 +17,11 @@ const Notes = ({ notes }) => {
                 if (note.title.toLowerCase().match(text.toLowerCase())) {
                     return notes;
                 }
+                return true;
             })
         );
     };
-
+    // eslint-disable-next-line
     useEffect(handleSearch, [text]);
 
     return (
@@ -46,8 +47,8 @@ const Notes = ({ notes }) => {
                 </button>
             </header>
             <div className='notes__container'>
-                {filteredNotes.length == 0 && (
-                    <p className='empty__notes'>No Notes Found</p>
+                {filteredNotes.length === 0 && (
+                    <p className='empty__notes'>Notes NOT Found</p>
                 )}
                 {filteredNotes.map((note) => (
                     <NoteItem key={note.id} note={note} />
